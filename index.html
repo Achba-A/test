@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Лёгкий макет | Сайт-визитка</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(145deg, #0a0f1e 0%, #0c1222 100%);
+            color: #eef5ff;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .header {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+            position: sticky;
+            top: 0;
+            background: rgba(10, 15, 30, 0.75);
+            z-index: 10;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #b3e5ff, #7c4dff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #cddcff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            text-shadow: 0 0 6px rgba(124, 77, 255, 0.5);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #ffffff, #a88bff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 680px;
+            margin: 0 auto;
+            color: #b9c7f0;
+        }
+
+        .btn-group {
+            margin-top: 36px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #7c4dff;
+            color: white;
+            box-shadow: 0 8px 20px rgba(124, 77, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #966eff;
+            transform: scale(1.02);
+            box-shadow: 0 12px 24px rgba(124, 77, 255, 0.4);
+        }
+
+        .btn-outline {
+            border: 1px solid #7c4dff;
+            color: #cddcff;
+        }
+
+        .btn-outline:hover {
+            background: rgba(124, 77, 255, 0.15);
+            border-color: #a88bff;
+        }
+
+        /* Cards section */
+        .section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background: rgba(20, 28, 45, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            padding: 28px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.25s ease;
+        }
+
+        .card:hover {
+            background: rgba(30, 40, 65, 0.8);
+            border-color: rgba(124, 77, 255, 0.4);
+            transform: translateY(-6px);
+        }
+
+        .card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #b4c2e6;
+        }
+
+        /* Contact form */
+        .form-box {
+            max-width: 680px;
+            margin: 0 auto;
+            background: rgba(18, 24, 40, 0.6);
+            border-radius: 48px;
+            padding: 40px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 14px 20px;
+            background: #0f1428;
+            border: 1px solid #2a2f4b;
+            border-radius: 32px;
+            font-size: 1rem;
+            color: white;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #7c4dff;
+            box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.2);
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #7c4dff;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 40px;
+            color: white;
+        }
+
+        .submit-btn:hover {
+            background: #926eff;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 32px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 40px;
+            color: #7f8bb3;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .nav {
+                flex-direction: column;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="nav">
+            <div class="logo">✦ LIGHTMAC</div>
+            <div class="nav-links">
+                <a href="#">Главная</a>
+                <a href="#services">Услуги</a>
+                <a href="#contact">Контакты</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <h1>Быстро. Легко. Стильно.</h1>
+            <p>Набросал для тебя современный макет — чистый код, плавные тени, никакой магии. Бери и используй!</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn btn-primary">Заказать проект</a>
+                <a href="#services" class="btn btn-outline">Посмотреть примеры</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">Что внутри?</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">⚡️</div>
+                    <h3>Лёгкость</h3>
+                    <p>Минимум зависимостей, адаптив из коробки, грузится за мгновение.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎨</div>
+                    <h3>Современный стиль</h3>
+                    <p>Градиенты, неоновая кнопка, карточки с эффектом наведения.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📱</div>
+                    <h3>Готов к мобильным</h3>
+                    <p>На телефоне выглядит так же хорошо, как на большом экране.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Напиши пару строк</h2>
+            <div class="form-box">
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <input type="text" placeholder="Твоё имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email или Telegram" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Что нужно сделать? Максимально коротко 😊"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить →</button>
+                </form>
+                <p style="margin-top: 24px; font-size: 0.85rem; text-align: center; opacity: 0.7;">※ Демо-форма — просто макет, данные никуда не уходят.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>✧ накидал за 5 минут — бери и дорабатывай под себя ✧</p>
+    </div>
+</footer>
+
+</body>
+</html>
